@@ -60,6 +60,8 @@ public class ApiConnect {
             return response.getBody();
 
         } catch (Exception e) {
+            Logger.getLogger(ApiConnect.class.getName()).log(Level.SEVERE,null , e );
+
             throw new Exception(e.getMessage());
         }
     }
