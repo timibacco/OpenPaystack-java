@@ -27,7 +27,7 @@ public class ApiConnect {
     @Autowired
     private final String url;
 
-    public void checkAPISecretKey() {
+    private void checkAPISecretKey() {
         try {
             Assert.hasText(API_SECRET_KEY, "API_SECRET_KEY is not set");
         } catch (IllegalArgumentException e) {
@@ -39,11 +39,11 @@ public class ApiConnect {
 
 
 
-
-
     public JsonNode get(String email, String first_name, String last_name, String phone, Map<String,Object> metadata) throws Exception {
 
         try {
+
+            checkAPISecretKey();
             CustomerQuery query = new CustomerQuery(email, first_name, last_name, phone, metadata);
 
             RestTemplate restTemplate = new RestTemplate();
